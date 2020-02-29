@@ -1,0 +1,45 @@
+<html lang="en">
+
+<body>
+    <img src="zombie.gif" id="IdZombie" width="200" height="200">
+    <audio id="explosion">
+        <source src="audio.mp3" type="audio/mpeg">
+            audio not supported
+    </audio>
+
+    <script>
+        let audio = document.getElementById("explosion");
+        let img = document.getElementById("IdZombie");
+        // While isExploding varible is true, more clicking on image 
+        // will not do anything 
+        // using setTimeout, for 2 seconds isExploding remains true 
+        let isExploding = false;
+        let explosionTime= 2000;
+        img.onclick = handler;
+
+
+        function handler() {
+            if (isExploding) {
+                return
+            }
+
+            isExploding = true;
+            exploid();
+            setTimeout(function () {
+                birth();
+                isExploding = false;
+            }, explosionTime);
+        }
+        function exploid() {
+            img.src = "explosion.gif";
+            audio.play();
+        }
+
+        function birth() {
+            img.src = "zombie.gif";
+        }
+
+    </script>
+</body>
+
+</html>
